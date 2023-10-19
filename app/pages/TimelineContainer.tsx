@@ -26,12 +26,37 @@ interface TimelineStep {
 }
 
 function TimelineContainer() {
-  const [timeline, setTimeline] = useState<Array<TimelineStep> | null>(steps);
+  const [timelineData, setTimelineData] = useState<Array<TimelineStep> | null>(steps);
+
+  function handleChange(event: React.SyntheticEvent) {
+
+  }
 
   return (
-    <div>
-      
-    </div>
+    <form className='TimelineContainer'>
+      {
+        timelineData?.map((item) => (
+          <div className='timelineBox' key={item.id}>
+            <div className='tl-left'>
+              <textarea 
+                  defaultValue={item.title} 
+                  placeholder="type something descriptive"
+                  onChange={handleChange}
+                  name={item.title}
+              />
+            </div>
+            <div className='tl-right'>
+              <textarea 
+                  defaultValue={item.description} 
+                  placeholder="type something descriptive"
+                  onChange={handleChange}
+                  name={item.description}
+              />
+            </div>
+          </div>
+        ))
+      }
+    </form>
   )
 }
 

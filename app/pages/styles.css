@@ -1,0 +1,52 @@
+.timelineContainer {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+
+
+/* Swiper styles */
+
+.step-title--timeline_section {
+  font-size:55px;
+  line-height:90px;
+  color: #000
+}
+.row1--timeline_section .tl-top-row {
+  border-bottom:3px dotted #cf0303
+}
+
+.row1--timeline_section .tl-bottom-row {
+  padding-top: 62px;
+}
+.row1--timeline_section .single--timeline_section {
+  padding-bottom:70px
+}
+
+.row1--timeline_section .swiper--timeline_section {
+  padding-bottom:20px
+}
+
+.swiper--timeline_section1{
+  padding-top:20px;
+  margin-top:-60px
+}
+
+.step-desc--timeline_section{
+  padding:0 20px
+}
+
+textarea {
+  text-align: center;
+  resize: none;
+  width: fit-content;
+}
+
+.swiper-slide {
+  text-align: center;
+  background: #fff;
+}
+
+.swiper-size {
+  width: 100vw;
+}

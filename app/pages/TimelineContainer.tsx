@@ -54,8 +54,8 @@ function TimelineContainer() {
             modules={[Keyboard, Navigation]}
             className="swiper-size"
           >
-            {timelineData?.map((item) => (
-              <SwiperSlide key={item.id} className="swiper-wrapper-container">
+            {timelineData?.map((step) => (
+              <SwiperSlide key={step.id} className="swiper-wrapper-container">
                 <div className="single--timeline_section tl-top-row">
                   
                   <div className="content--timeline_section flex inline-flex">
@@ -63,10 +63,10 @@ function TimelineContainer() {
                       <div className="step-title--timeline_section m-0 font-bold">
                         <textarea 
                           rows={1} 
-                          cols={item.title.length}
+                          cols={step.title.length}
                           placeholder="Step Title"
                           name="firstName"
-                          value={item.title}
+                          value={step.title}
                         />
                       </div>
                     </div>
@@ -82,14 +82,23 @@ function TimelineContainer() {
                     <div className="step-desc--timeline_section">
                       <textarea
                         rows={1} 
-                        cols={item.description.length}
+                        cols={step.description.length}
                         placeholder="Step Description"
                         name="firstName"
-                        value={item.description}
+                        value={step.description}
                       />
                     </div>
                   </div>
                 </div>
+                <button onClick={() => {
+                  setTimelineData(
+                    timelineData.filter(item =>
+                      item.id !== step.id
+                    )
+                  );
+                }}>
+                  Delete
+                </button>
               </SwiperSlide>
             ))}
           </Swiper>

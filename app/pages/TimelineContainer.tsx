@@ -73,6 +73,10 @@ function TimelineContainer() {
                   </div>
                 </div>
 
+                <div className='milestone'> 
+                  <span className="dot"></span>
+                </div>
+
                 <div className="single--timeline_section relative tl-bottom-row">
                   <div className="content--timeline_section flex inline-flex">
                     <div className="step-desc--timeline_section">

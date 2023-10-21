@@ -51,12 +51,64 @@ textarea {
   width: 100vw;
 }
 
-.dot {
-  height: 25px;
-  width: 25px;
-  background-color: #bbb;
+.unchecked-step, .checked-step   {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   display: inline-block;
   position: relative;
   bottom: 13px;
 }
+
+.dot {
+  display: flex;
+  border-radius: 50%;
+  background-color: #bbb;
+}
+
+.unchecked-step {
+  .dot {
+    background-color: rgb(140, 50, 50) !important;
+    background: url('../../public/minus-1.png');
+    background-size: 51px;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    background-position: center;
+  }
+}
+
+.checked-step {
+  .dot {
+    background-color: green !important;
+    background: url('../../public/tick-1.png');
+    background-size: 51px;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    background-position: center;
+  }
+}
+
+.plus-icon {
+  background: url('../../public/plus_1.png');
+  background-size: 22px;
+  background-repeat: no-repeat;
+  height: 22px;
+  width: 33px;
+}
+
+.milestone {
+  position: relative;
+  bottom: 25px;
+}
+
+.tl-btn {
+  border-radius: 2rem;
+  cursor: pointer;
+  display: flex;
+  padding: 0.75rem;
+  transition: all 0.25s ease 0s;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(204, 202, 246);
+} 

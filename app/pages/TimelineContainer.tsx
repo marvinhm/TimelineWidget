@@ -1,29 +1,33 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TimelineSwiper from './TimelineSwiper';
 
 const steps: TimelineStepType[] = [
   {
-    id: 1,
+    id: 0,
     title: "Step 1",
-    description: "This is step one!"
+    description: "This is step one!",
+    completed: false
+  },
+  {
+    id: 1,
+    title: "Step 2",
+    description: "This is step two!",
+    completed: false
   },
   {
     id: 2,
-    title: "Step 2",
-    description: "This is step two!"
-  },
-  {
-    id: 3,
     title: "Step 3",
-    description: "This is step three!"
+    description: "This is step three!",
+    completed: false
   }
 ]
 
 export interface TimelineStepType {
   id: number,
   title: string,
-  description: string
+  description: string,
+  completed: boolean
 }
 
 function TimelineContainer() {
@@ -31,30 +35,30 @@ function TimelineContainer() {
   const [stepTitle, setStepTitle] = useState<string>('');
   const [stepDescription, setstepDescription] = useState<string>('');
 
-  let nextId: number = timelineData.length;
 
   function handleClick() {
-    let insertAt = nextId+1;
-    const nextStep: any = [
-      // Items before the insertion point:
-      ...timelineData.slice(0, insertAt-1),
-      // New item:
-      { id: insertAt++, title: '', description: '' },
-      // Items after the insertion point:
-      ...timelineData.slice(insertAt-1)
+    let arrayLength = timelineData.length;
+    const nextStep: TimelineStepType[] = [
+      ...timelineData,
+      { id: arrayLength++, title: '', description: '', completed: false }
     ];
 
     setTimelineData(nextStep);
 
   }
 
+  useEffect(() => {
+    console.log("timelineData", timelineData);
+  }, [timelineData])
+
 
   return (
     <div className="timelineContainer">
       <div className="row row1--timeline_section">
         <div>
-          <button onClick={handleClick}>
-            + Add
+          <button className='tl-btn' onClick={handleClick}>
+            <span className='plus-icon'></span>
+            <p>ADD A STEP</p>
           </button>
         </div>
         <div className="col-md-12">

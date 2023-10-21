@@ -19,6 +19,34 @@ interface TimelineSwiperProps {
 }
 
 function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
+
+  const handleComplete = () => {
+    
+  }
+
+  const handleFieldChange = (index: number, ev1: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value, name } = ev1.target;
+  
+    console.log('index: ' + index);
+    console.log('property name: '+ name);
+  
+    dataSetter(
+      data.map(item => 
+          item.id === index
+          ? {...item, [name] : value}
+          : item 
+    ))
+  }
+  const handleCompletedClick = (index: number): void => {
+    dataSetter(
+      data.map(item => 
+          item.id === index
+          ? {...item, ["completed"] : true}
+          : item 
+    ))
+  }
+
+
   return (
     <div>
       <Swiper
@@ -31,7 +59,7 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
         modules={[Keyboard, Navigation]}
         className="swiper-size"
       >
-        {data?.map((step) => (
+        {data?.map((step, index) => (
           <SwiperSlide key={step.id} className="swiper-wrapper-container">
             <div className="single--timeline_section tl-top-row">
               <div className="content--timeline_section flex inline-flex">
@@ -41,8 +69,11 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
                       rows={1}
                       cols={step.title.length}
                       placeholder="Step Title"
-                      name="firstName"
-                      value={step.title}
+                      name="title"
+                      defaultValue={step.title}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                        handleFieldChange(index, e)
+                      }
                     />
                   </div>
                 </div>
@@ -50,7 +81,19 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
             </div>
 
             <div className="milestone">
-              <span className="dot"></span>
+              {step.completed ? (
+                <div className="checked-step" title="Checked">
+                  <span className='dot'></span>
+                </div>
+              ) : (
+                <div
+                  className="unchecked-step" title="Unchecked"
+                  onClick={() => handleCompletedClick(index)}
+                >
+                  <span className='dot'></span>
+                </div>
+              )}
+              
             </div>
 
             <div className="single--timeline_section relative tl-bottom-row">
@@ -60,17 +103,19 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
                     rows={1}
                     cols={step.description.length}
                     placeholder="Step Description"
-                    name="firstName"
-                    value={step.description}
+                    name="description"
+                    defaultValue={step.description}
+                    onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      handleFieldChange(index, event)
+                    }
                   />
                 </div>
               </div>
             </div>
             <button
+              className='tl-btn'
               onClick={() => {
-                dataSetter(
-                  data.filter((item) => item.id !== step.id)
-                );
+                dataSetter(data.filter((item) => item.id !== step.id));
               }}
             >
               Delete

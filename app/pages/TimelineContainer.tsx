@@ -38,11 +38,35 @@ interface TimelineStep {
 
 function TimelineContainer() {
   const [timelineData, setTimelineData] = useState<Array<TimelineStep>>(steps);
+  const [stepTitle, setStepTitle] = useState<string>('');
+  const [stepDescription, setstepDescription] = useState<string>('');
+
+  let nextId: number = timelineData.length;
+
+  function handleClick() {
+    let insertAt = nextId+1; // Could be any index
+    const nextStep: any = [
+      // Items before the insertion point:
+      ...timelineData.slice(0, insertAt-1),
+      // New item:
+      { id: insertAt++, title: '', description: '' },
+      // Items after the insertion point:
+      ...timelineData.slice(insertAt-1)
+    ];
+
+    setTimelineData(nextStep);
+
+  }
 
 
   return (
     <div className="timelineContainer">
       <div className="row row1--timeline_section">
+        <div>
+          <button onClick={handleClick}>
+            + Add
+          </button>
+        </div>
         <div className="col-md-12">
           <Swiper
             slidesPerView={2}

@@ -16,15 +16,13 @@
   border-bottom:3px dotted #cf0303
 }
 
-.row1--timeline_section .tl-bottom-row {
-  padding-top: 62px;
-}
 .row1--timeline_section .single--timeline_section {
   padding-bottom:70px
 }
 
-.row1--timeline_section .swiper--timeline_section {
-  padding-bottom:20px
+.row1--timeline_section .tl-bottom-row {
+  padding-top: 48px;
+  padding-bottom: 0;
 }
 
 .swiper--timeline_section1 {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, Ref } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,14 +11,15 @@ import './styles.css';
 
 // import required modules
 import { Keyboard, Navigation } from 'swiper/modules';
-import { TimelineStepType } from './TimelineContainer';
+import { TimelineStepType, ThemeDataType } from './TimelineContainer';
 
 interface TimelineSwiperProps {
   data: TimelineStepType[],
   dataSetter: React.Dispatch<React.SetStateAction<TimelineStepType[]>>
+  themeData:ThemeDataType;
 }
 
-function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
+function TimelineSwiper({ data, dataSetter, themeData }: TimelineSwiperProps) {
 
 
   const handleFieldChange = (index: number, ev1: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -83,7 +84,7 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
                 </div>
               ) : (
                 <div
-                  className="unchecked-step" title="Unchecked"
+                  className={themeData.themeColour ? `unchecked-step ${themeData.themeColour}-theme` : 'unhecked-step'}title="Unchecked"
                   onClick={() => handleCompletedClick(index)}
                 >
                   <span className='dot'></span>

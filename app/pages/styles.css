@@ -72,7 +72,6 @@ textarea {
 
 .unchecked-step {
   .dot {
-    background-color: rgb(140, 50, 50) !important;
     background: url('../../public/minus-1.png');
     background-size: 51px;
     background-repeat: no-repeat;
@@ -80,6 +79,26 @@ textarea {
     height: 80px;
     background-position: center;
   }
+
+  &.red-theme {
+    background-color: rgb(140, 50, 50) !important;
+  }
+  
+  &.blue-theme {
+    background-color: rgb(73, 54, 246) !important;
+  }
+  
+  &.grey-theme {
+    background-color: rgb(80, 77, 77) !important;
+  }
+}
+
+.theme-fieldset {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px;
+  width: 262px;
 }
 
 .checked-step {

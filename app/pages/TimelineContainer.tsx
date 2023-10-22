@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TimelineSwiper from './TimelineSwiper';
 
 const steps: TimelineStepType[] = [
@@ -32,8 +32,6 @@ export interface TimelineStepType {
 
 function TimelineContainer() {
   const [timelineData, setTimelineData] = useState<Array<TimelineStepType>>(steps);
-  const [stepTitle, setStepTitle] = useState<string>('');
-  const [stepDescription, setstepDescription] = useState<string>('');
 
 
   function handleClick() {
@@ -42,7 +40,6 @@ function TimelineContainer() {
       ...timelineData,
       { id: arrayLength++, title: '', description: '', completed: false }
     ];
-
     setTimelineData(nextStep);
 
   }
@@ -52,16 +49,20 @@ function TimelineContainer() {
     <div className="timelineContainer">
       <div className="row row1--timeline_section">
         <div>
-          <button className='tl-btn' onClick={handleClick}>
-            <span className='plus-icon'></span>
+          <button className="tl-btn drop-shadow-md" title="Add step button" onClick={handleClick}>
+            <span className="plus-icon"></span>
             <p>ADD A STEP</p>
           </button>
         </div>
-        <div className="tl-swiper-content md:container md:mx-auto">
-          <TimelineSwiper 
-            data={timelineData}
-            dataSetter={setTimelineData}
-          />
+        <div className="tl-swiper-content md:container md:mx-auto drop-shadow-md">
+          {timelineData.length === 0 ? (
+            <div className="tl-empty-message">
+              <h1>Timeline Widget.</h1>
+              <h1>Add a step to the timeline.</h1>
+            </div>
+          ) : (
+            <TimelineSwiper data={timelineData} dataSetter={setTimelineData} />
+          )}
         </div>
       </div>
     </div>

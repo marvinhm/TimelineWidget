@@ -65,6 +65,7 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
                       rows={2}
                       placeholder="Enter a title..."
                       name="title"
+                      title="Step title text area"
                       defaultValue={step.title}
                       onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                         handleFieldChange(index, e)
@@ -98,8 +99,9 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
                     className="text-slate-500 dark:text-slate-600 mt-2 text-sm"
                     rows={5}
                     cols={20}
-                    placeholder="Enter a description..."
+                    placeholder="Enter description..."
                     name="description"
+                    title="Step description text area"
                     defaultValue={step.description}
                     onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
                       handleFieldChange(index, event)
@@ -110,7 +112,8 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
             </div>
             <div className='tl-delete-section'>
               <button
-                className='tl-btn text-slate-700 mt-2 text-sm'
+                className='tl-btn text-slate-700 mt-2 text-sm drop-shadow-md'
+                title="Delete step button"
                 onClick={() => {
                   dataSetter(data.filter((item) => item.id !== step.id));
                 }}

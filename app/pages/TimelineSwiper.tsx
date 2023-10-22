@@ -20,15 +20,9 @@ interface TimelineSwiperProps {
 
 function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
 
-  const handleComplete = () => {
-    
-  }
 
   const handleFieldChange = (index: number, ev1: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value, name } = ev1.target;
-  
-    console.log('index: ' + index);
-    console.log('property name: '+ name);
   
     dataSetter(
       data.map(item => 
@@ -66,9 +60,10 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
                 <div className="step--timeline_section">
                   <div className="step-title--timeline_section m-0 font-bold">
                     <textarea
-                      rows={1}
-                      cols={step.title.length}
-                      placeholder="Step Title"
+                      className="text-slate-700 dark:text-slate-800 mt-2 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+                      cols={7}
+                      rows={2}
+                      placeholder="Enter a title..."
                       name="title"
                       defaultValue={step.title}
                       onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -100,9 +95,10 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
               <div className="content--timeline_section flex inline-flex">
                 <div className="step-desc--timeline_section">
                   <textarea
-                    rows={1}
-                    cols={step.description.length}
-                    placeholder="Step Description"
+                    className="text-slate-500 dark:text-slate-600 mt-2 text-sm"
+                    rows={5}
+                    cols={20}
+                    placeholder="Enter a description..."
                     name="description"
                     defaultValue={step.description}
                     onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -112,14 +108,16 @@ function TimelineSwiper({ data, dataSetter }: TimelineSwiperProps) {
                 </div>
               </div>
             </div>
-            <button
-              className='tl-btn'
-              onClick={() => {
-                dataSetter(data.filter((item) => item.id !== step.id));
-              }}
-            >
-              Delete
-            </button>
+            <div className='tl-delete-section'>
+              <button
+                className='tl-btn text-slate-700 mt-2 text-sm'
+                onClick={() => {
+                  dataSetter(data.filter((item) => item.id !== step.id));
+                }}
+              >
+                DELETE
+              </button>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

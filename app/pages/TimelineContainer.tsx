@@ -11,14 +11,14 @@ const steps: TimelineStepType[] = [
   },
   {
     id: 1,
-    title: "Step 2",
-    description: "This is step two!",
+    title: "",
+    description: "",
     completed: false
   },
   {
     id: 2,
-    title: "Step 3",
-    description: "This is step three!",
+    title: "",
+    description: "",
     completed: false
   }
 ]
@@ -47,10 +47,6 @@ function TimelineContainer() {
 
   }
 
-  useEffect(() => {
-    console.log("timelineData", timelineData);
-  }, [timelineData])
-
 
   return (
     <div className="timelineContainer">
@@ -61,7 +57,7 @@ function TimelineContainer() {
             <p>ADD A STEP</p>
           </button>
         </div>
-        <div className="col-md-12">
+        <div className="tl-swiper-content md:container md:mx-auto">
           <TimelineSwiper 
             data={timelineData}
             dataSetter={setTimelineData}

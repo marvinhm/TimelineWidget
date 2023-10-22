@@ -42,13 +42,19 @@ textarea {
   width: fit-content;
 }
 
+.tl-swiper-content {
+  border-radius: 47px;
+  background: white;
+}
+
 .swiper-slide {
   text-align: center;
-  background: #fff;
+  padding-bottom: 22px;
+  padding-top: 22px;
 }
 
 .swiper-size {
-  width: 100vw;
+  width: 81vw;
 }
 
 .unchecked-step, .checked-step   {
@@ -111,4 +117,9 @@ textarea {
   transition: all 0.25s ease 0s;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(204, 202, 246);
-} 
+}
+
+.tl-delete-section {
+  display: flex;
+  justify-content: center;
+}
